@@ -16,6 +16,13 @@ python -m pip install -r requirements.txt
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
+## Docker
+
+```bash
+docker build -t vox-ai-service .
+docker run --rm -p 8000:8000 vox-ai-service
+```
+
 - `GET /health`
 - `POST /interpret` com JSON `{ "text": "Me lembre de estudar amanhã às 19h" }`
 

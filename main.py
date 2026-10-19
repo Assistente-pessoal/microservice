@@ -1,10 +1,3 @@
-"""VOX interpretation API: deterministic MVP parser ready for an AI-provider adapter.
-
-This starter does not call a generative model. It extracts common Portuguese date/time
-expressions and classifies a few domains/priority words so the end-to-end integration
-can be exercised before an AI provider and credentials are chosen.
-"""
-
 from __future__ import annotations
 
 import os
