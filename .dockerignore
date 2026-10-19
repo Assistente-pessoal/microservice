@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.py[cod]
+.git/
+.gitignore
+.pytest_cache/
+*.egg-info/
+Dockerfile
+README.md
+test_parser.py
