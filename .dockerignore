@@ -5,6 +5,10 @@ __pycache__/
 .gitignore
 .pytest_cache/
 *.egg-info/
+.env
+.env.*
+!.env.example
 Dockerfile
 README.md
 test_parser.py
+test_hybrid.py

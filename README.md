@@ -2,7 +2,7 @@
 
 Serviço Python que recebe somente texto e devolve os campos estruturados esperados pela `agenda-api`.
 
-> Esta versão é intencionalmente um parser determinístico para validar a integração, não um modelo de IA. Substitua/expanda `interpret_text()` para conectar o provedor de IA escolhido antes de avaliar a meta de precisão de 90% descrita no plano.
+> O serviço usa o parser determinístico como base e, quando `GROQ_API_KEY` está configurada, envia o candidato ao Groq para validação e correção estruturada. Sem essa chave, funciona automaticamente em modo fallback, sem chamada externa.
 
 > O pacote `tzdata` é uma dependência explícita porque o Python no Windows normalmente não inclui a base IANA de fusos horários usada por `ZoneInfo("America/Sao_Paulo")`.
 
@@ -15,6 +15,17 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
+
+Para habilitar a validação pelo Groq, preencha o arquivo `.env` na raiz do projeto:
+
+```env
+GROQ_API_KEY=sua-chave-do-groq
+GROQ_MODEL=openai/gpt-oss-20b
+```
+
+O arquivo `.env` é carregado automaticamente e não deve ser commitado.
+
+O endpoint `GET /health` informa `groq-validation` quando o Groq está habilitado e `rule-based-fallback` caso contrário.
 
 ## Docker
 
